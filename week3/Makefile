@@ -22,4 +22,8 @@ docker-build-jetson:
 
 .PHONY: run-mqtt-sub
 run-mqtt-sub:
-	@ docker run -it -v /mnt/w251:/mnt/w251 w251_jetson:latest python3 stream_ready.py
+	@docker run -it -v /mnt/w251:/mnt/w251 w251_jetson:latest python3 stream_reader.py
+
+.PHONY: run-jetson
+run-jetson:
+	@docker run -it --device=/dev/video0:/dev/video0 w251_jetson:latest python3 stream.py
