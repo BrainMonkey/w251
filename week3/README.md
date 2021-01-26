@@ -6,6 +6,22 @@ I used Make file to build the containers and run the code.
 
 I used a very basic MQTT topic: `w251/hw3` and used the default `fire and forget` qos or level 0. So there is no guarentees that the message will be delivered from the published. 
 
+### streamer.py
+
+Code that runs on the jetson device. 
+
+1. Connects to MQTT broker
+2. Reads in the video device using OpenCv
+3. If face is found, that frame is sent to the broker
+
+### stream_reader.py
+
+Code that runs on the EC2 Instance:
+
+1. Connects to the MQTT broker
+2. Deserializes frame and create and image
+3. Saves image to S3 volume mounted on EC2 instance
+
 # Infrastructure
 
 ## Terraform
