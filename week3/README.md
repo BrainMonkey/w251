@@ -2,7 +2,9 @@
 
 https://github.com/MIDS-scaling-up/v2/tree/master/week03/hw
 
-Used Make file to build the containers and run the code. 
+I used Make file to build the containers and run the code. 
+
+I used a very basic MQTT topic: `w251/hw3` and used the default `fire and forget` qos or level 0. So there is no guarentees that the message will be delivered from the published. 
 
 # Infrastructure
 
@@ -13,11 +15,14 @@ Use terraform to provison a EC2 instance and bucket.
 ### EC2 Instance
 
  IP Addrress: `54.215.95.106`
+
  Region: `us-west-1`
+
 
  ### S3 Bucket
 
 Bucket: `berkeley-w251`
+
 Region: `us-west-1`
 
 
