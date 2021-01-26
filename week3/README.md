@@ -2,34 +2,39 @@
 
 https://github.com/MIDS-scaling-up/v2/tree/master/week03/hw
 
+Used Make file to build the containers and run the code. 
+
 # Infrastructure
 
 ## Terraform
 
-Use terraform to provison a EC2 instance bucket
+Use terraform to provison a EC2 instance and bucket.
 
 ### EC2 Instance
 
-### S3 BUcket
+ IP Addrress: `54.215.95.106`
+ Region: `us-west-1`
+
+ ### S3 Bucket
+
+Bucket: `berkeley-w251`
+Region: `us-west-1`
+
 
 # Docker
 
 Use docker and docker-compose to create containers for services and deploy them to local host as well as AWS EC2 instance.
 
-## Services
+### MQTT Broker
 
-### MQTT
+Image: `hivemq/hivemq4`
 
-#### Broker
-This recieves messages and passes them along to the sender
+Used all the defaults, with no volumes mounted.  Once the container is closed, all data is lost. 
 
-#### Sender
+#### Jetson - Cuda
 
+Used a single container to stream in video from webcam connected to Jetson device. If a face is detected, the frame is sent to the desginated MQTT broker. 
 
-### Python OpenCV
+#### MQTT Subscriber
 
-Read in data from webcam and send it to MQTT broker
-
-### Python OpenCV
-
-Read in data from webcam and send it to MQTT broker
+This is a Python 3.9 base with packages and streaming code copied into it. 
