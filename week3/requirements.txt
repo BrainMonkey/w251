@@ -1,0 +1,4 @@
+paho-mqtt
+opencv-python
+ffmpeg-python
+boto3

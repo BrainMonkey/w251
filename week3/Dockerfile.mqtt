@@ -1,0 +1,11 @@
+FROM python:3.9-slim
+
+RUN  apt-get update && apt-get upgrade
+
+COPY ./requirements.txt /tmp/requirements.txt
+
+RUN python3 -m pip install -r /tmp/requirements.txt
+
+RUN pip install paho-mqtt opencv-python ffmpeg-python boto3
+
+COPY ./stream_reader.py .

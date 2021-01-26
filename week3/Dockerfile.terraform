@@ -1,0 +1,9 @@
+FROM hashicorp/terraform:light
+
+ARG TERRAFORMDIR
+
+COPY ./terraform/ /tmp/terraform
+
+WORKDIR /tmp/terraform
+
+ENTRYPOINT [ "/bin/sh","/tmp/terraform/tf.sh" ]
