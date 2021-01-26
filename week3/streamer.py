@@ -14,9 +14,9 @@ import paho.mqtt.client as mqtt
 
 
 # MQTT Broker Settings
-MQTT_BROKER = "54.215.95.106"
-MQTT_PORT = 1883
-MQTT_TOPIC = "w251/hw3"
+MQTT_BROKER = os.getenv("MQTT_BROKER", "54.215.95.106")
+MQTT_PORT = int(os.getenv("MQTT_PORT", "1883"))
+MQTT_TOPIC = os.getenv("MQTT_TOPIC", "w251/hw3")
 
 # OpenCV XML Classifer Data
 FRONTALFACE_FILE_PATH = (
@@ -59,12 +59,13 @@ try:
             # Encoding the Frame
             _, buffer = cv2.imencode(".jpg", frame)
             # Converting into encoded bytes
-            jpg_as_text = base64.b64encode(buffer)
+            img_serialized = base64.b64encode(buffer)
             # Publishig the Frame on the Topic home/server
-            client.publish(MQTT_TOPIC, jpg_as_text)
+            client.publish(MQTT_TOPIC, img_serialized)
 
 
-except:
+except Exception as err:
+    print(f"Error: {err}")
     cap.release()
     client.disconnect()
     print("\nNow you can restart fresh")
